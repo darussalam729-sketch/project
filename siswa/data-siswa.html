@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Data Siswa - SMART BPP</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins', sans-serif;
+}
+
+body{
+    background:#f1f5f9;
+    display:flex;
+}
+
+/* ================= SIDEBAR ================= */
+
+.sidebar{
+    width:260px;
+    height:100vh;
+    background:linear-gradient(180deg,#1e3a8a,#172554);
+    position:fixed;
+    padding:20px;
+    color:white;
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:40px;
+}
+
+.logo h2{
+    font-size:24px;
+}
+
+.logo p{
+    font-size:13px;
+    color:#cbd5e1;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    padding:14px;
+    border-radius:12px;
+    margin-bottom:10px;
+    transition:0.3s;
+}
+
+.menu a:hover{
+    background:rgba(255,255,255,0.15);
+    transform:translateX(5px);
+}
+
+/* ================= MAIN ================= */
+
+.main{
+    margin-left:260px;
+    width:100%;
+    padding:30px;
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.header h1{
+    color:#1e293b;
+}
+
+.header p{
+    color:#64748b;
+    margin-top:5px;
+}
+
+/* ================= TOP ACTION ================= */
+
+.top-action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.search-box input{
+    padding:12px 15px;
+    width:280px;
+    border:none;
+    border-radius:12px;
+    outline:none;
+    background:white;
+    box-shadow:0 2px 8px rgba(0,0,0,0.08);
+}
+
+.btn-tambah{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:500;
+    transition:0.3s;
+}
+
+.btn-tambah:hover{
+    background:#1d4ed8;
+    transform:translateY(-2px);
+}
+
+/* ================= TABLE ================= */
+
+.table-container{
+    background:white;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.08);
+    overflow:auto;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+table th{
+    background:#1e3a8a;
+    color:white;
+    padding:15px;
+    text-align:left;
+    font-size:14px;
+}
+
+table td{
+    padding:15px;
+    border-bottom:1px solid #e2e8f0;
+    color:#334155;
+}
+
+table tr:hover{
+    background:#f8fafc;
+}
+
+/* ================= STATUS ================= */
+
+.badge{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+    color:white;
+}
+
+.aktif{
+    background:#16a34a;
+}
+
+/* ================= BUTTON ================= */
+
+.btn-edit{
+    background:#f59e0b;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+    margin-right:5px;
+}
+
+.btn-hapus{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:8px 12px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.btn-edit:hover,
+.btn-hapus:hover{
+    opacity:0.9;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+    .sidebar{
+        width:220px;
+    }
+
+    .main{
+        margin-left:220px;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+        <h2>SMART BPP</h2>
+        <p>SMAN 2 Sampit</p>
+    </div>
+
+    <div class="menu">
+        <a href="../dashboard.html">🏠 Dashboard</a>
+        <a href="#">👨‍🎓 Data Siswa</a>
+        <a href="../kelas/data-kelas.html">🏫 Data Kelas</a>
+        <a href="../pembayaran/pembayaran.html">💳 Pembayaran</a>
+        <a href="../pembayaran/tagihan.html">📄 Tagihan</a>
+        <a href="../pembayaran/laporan.html">📊 Laporan</a>
+        <a href="../pengaturan/pengaturan.html">⚙ Pengaturan</a>
+        <a href="../login.html">🚪 Logout</a>
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+            <h1>Data Siswa</h1>
+            <p>Kelola seluruh data siswa sekolah</p>
+        </div>
+
+    </div>
+
+    <!-- TOP ACTION -->
+
+    <div class="top-action">
+
+        <div class="search-box">
+            <input type="text" placeholder="🔍 Cari nama atau NIS siswa...">
+        </div>
+
+        <button class="btn-tambah">
+            + Tambah Siswa
+        </button>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+                <th>No</th>
+                <th>NIS</th>
+                <th>Nama Siswa</th>
+                <th>Kelas</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+
+            <tr>
+                <td>1</td>
+                <td>12345</td>
+                <td>Ahmad Fauzi</td>
+                <td>X IPA 1</td>
+                <td>
+                    <span class="badge aktif">
+                        Aktif
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-hapus">Hapus</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>2</td>
+                <td>12346</td>
+                <td>Siti Aisyah</td>
+                <td>X IPA 2</td>
+                <td>
+                    <span class="badge aktif">
+                        Aktif
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-hapus">Hapus</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>3</td>
+                <td>12347</td>
+                <td>Rahmat Hidayat</td>
+                <td>XI IPS 1</td>
+                <td>
+                    <span class="badge aktif">
+                        Aktif
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-hapus">Hapus</button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>4</td>
+                <td>12348</td>
+                <td>Nabila Putri</td>
+                <td>XII IPA 3</td>
+                <td>
+                    <span class="badge aktif">
+                        Aktif
+                    </span>
+                </td>
+                <td>
+                    <button class="btn-edit">Edit</button>
+                    <button class="btn-hapus">Hapus</button>
+                </td>
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>
